@@ -1,3 +1,12 @@
+// #include<opencv2/opencv.hpp> 
+// using namespace cv; 
+// int main() 
+// {     
+// Mat picture = imread("/home/hy/edgedetection/outdoor.png");    
+// imshow("显示图片", picture);    
+// waitKey(0); 
+// }
+
 #include <fstream>
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -13,9 +22,7 @@
 #include <pcl/sample_consensus/sac_model_plane.h>
 #include <pcl/search/kdtree.h>
 #include <pcl/segmentation/sac_segmentation.h>
-#include <pcl_conversions/pcl_conversions.h>
 #include <sstream>
-#include <std_msgs/Header.h>
 #include <stdio.h>
 #include <string>
 #include <time.h>
@@ -28,6 +35,9 @@ void edgeDetector(
   int gaussian_size = 5;
   cv::GaussianBlur(src_img, src_img, cv::Size(gaussian_size, gaussian_size), 0,
                    0);
+  cv::Mat image_ = cv::imread("/home/hy/edgedetection/outdoor.png");
+  int height_ = image_.cols;
+  int width_ = image_.rows;
   cv::Mat canny_result = cv::Mat::zeros(height_, width_, CV_8UC1);
   cv::Canny(src_img, canny_result, canny_threshold, canny_threshold * 3, 3,
             true);
@@ -71,10 +81,10 @@ void edgeDetector(
 
 int main(int argc, char **argv)
 {
-	int rgb_canny_threshold_ = 20;
+	int rgb_canny_threshold_ = 100;
 	int rgb_edge_minLen_ = 200;
-	cv::Mat image;
-	image_ = cv::imread("outdoor.png"); // rgb图像
+	cv::Mat image_;
+	image_ = cv::imread("/home/hy/edgedetection/outdoor.png"); // rgb图像
 	cv::Mat grey_image_;
 	cv::cvtColor(image_, grey_image_, cv::COLOR_BGR2GRAY); // 转换成灰度图像
 	cv::Mat edge_image;

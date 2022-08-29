@@ -1,0 +1,4 @@
+/home/hy/edgedetection/build/CMakeFiles/rebuild_cache.dir
+/home/hy/edgedetection/build/CMakeFiles/featuredetection.dir
+/home/hy/edgedetection/build/CMakeFiles/edit_cache.dir
+/home/hy/edgedetection/build/CMakeFiles/featuredetection_autogen.dir
